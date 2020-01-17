@@ -13,7 +13,8 @@ nV = 12 if len(player_names) > 2 else 8 # Number Victory cards
 nC = -10 + 10 * len(player_names) # Number Curse cards
 
 # Box of potential cards
-box = testUtility.create_box(nV, nC)
+# box = testUtility.create_box(nV, nC) # This is removed for testing purposes
+box = {} # Line added to introduce bug for Test Scenario
 
 # Sets supplies and their values
 supply_order = testUtility.get_supply_order()
