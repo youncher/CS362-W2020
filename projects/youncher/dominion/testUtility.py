@@ -5,17 +5,16 @@ Created on Fri Jan 17 2020
 @author: youncher
 """
 
-#hello there
 import Dominion
 import random
 from collections import defaultdict
 
-def get_player_names():
+def get_players():
     #Get player names
     player_names = ["Cherie","*Ben","*Carla"]
     return player_names
 
-def create_box(nV, nC):
+def get_boxes(nV):
     box = {}
     box["Woodcutter"] = [Dominion.Woodcutter()] * 10
     box["Smithy"] = [Dominion.Smithy()] * 10
@@ -44,6 +43,14 @@ def create_box(nV, nC):
     box["Throne Room"] = [Dominion.Throne_Room()] * 10
     return box
 
+# Return number Victory cards
+def get_curses(player_names):
+    return 12 if len(player_names) > 2 else 8
+
+# Return number Curse cards
+def get_victory_cards(player_names):
+    return -10 + 10 * len(player_names)
+
 def get_supply_order():
     supply_order = {0:['Curse','Copper'],2:['Estate','Cellar','Chapel','Moat'],
                 3:['Silver','Chancellor','Village','Woodcutter','Workshop'],
@@ -52,7 +59,7 @@ def get_supply_order():
                 6:['Gold','Adventurer'],8:['Province']}
     return supply_order
 
-def create_supply(box):
+def get_supply(box):
     # Pick 10 cards from box to be in the supply.
     boxlist = [k for k in box]
     random.shuffle(boxlist)
